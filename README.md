@@ -1,7 +1,7 @@
 # sub-fontend
 
 > 技术栈：vue+elementUI+scss+javascript
-> 该系统为四川工商学院科研成果门户网站，管理系统仓库地址：https://github.com/mynameisly/sub-manage.git
+> 该系统为四川工商学院科研成果门户网站，管理系统仓库地址: https://github.com/mynameisly/sub-manage.git
 
 ## Build Setup
 
