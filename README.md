@@ -1,6 +1,7 @@
-# mybaberrage
+# sub-fontend
 
-> According to the official Vue baberrage rewrite 
+> 技术栈：vue+elementUI+scss+javascript
+> 改系统为四川工商学院科研成果门户网站，管理系统仓库地址：https://github.com/mynameisly/sub-manage.git
 
 ## Build Setup
 
@@ -17,5 +18,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
