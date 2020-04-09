@@ -25,46 +25,43 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'Info',
     data() {
-        return {
-            infos: [
-                {
-                    'info_icon': '../assets/images/index/idx_info1.png',
-                    'info_title': '经典算法竞赛',
-                    'info_intro': '经典算法竞赛是在全国高中数学联赛的基础上进行的一次...',
-                    'info_state': '火热报名中'
-                },
-                {
-                    'info_icon': '../assets/images/index/idx_info2.png',
-                    'info_title': 'ACM 国际大学生程序设计竞赛 ',
-                    'info_intro': '中国物理学会重视ACM 国际大学生程序设计竞赛 (ACM/ICPC)....',
-                    'info_state': '报名已过'
-                },
-                {
-                    'info_icon': '../assets/images/index/idx_info3.png',
-                    'info_title': '微软创新杯全球学生大赛',
-                    'info_intro': '微软创新杯全球学生大赛是由国家教育部 微软创新杯全球学生大赛是由国家教育部微软创新杯全球学生大赛是由国',
-                    'info_state': '火热报名中'
-                }
-            ]
-        }
+      return {
+        infos: [
+          {
+            'info_icon': '../assets/images/index/idx_info1.png',
+            'info_title': '经典算法竞赛',
+            'info_intro': '经典算法竞赛是在全国高中数学联赛的基础上进行的一次...',
+            'info_state': '火热报名中'
+          },
+          {
+            'info_icon': '../assets/images/index/idx_info2.png',
+            'info_title': 'ACM 国际大学生程序设计竞赛 ',
+            'info_intro': '中国物理学会重视ACM 国际大学生程序设计竞赛 (ACM/ICPC)....',
+            'info_state': '报名已过'
+          },
+          {
+            'info_icon': '../assets/images/index/idx_info3.png',
+            'info_title': '微软创新杯全球学生大赛',
+            'info_intro': '微软创新杯全球学生大赛是由国家教育部 微软创新杯全球学生大赛是由国家教育部微软创新杯全球学生大赛是由国',
+            'info_state': '火热报名中'
+          }
+        ]
+      }
     },
     mounted () {
-        this.getinfolist()
+      this.getinfolist()
     },
     methods: {
-        getinfolist () {
-            axios.get('/sub/subject/findAllSubject?page=1&pageSize=10').then((res) => {
-                this.page.currentPage = res.data.data.currentPage
-                this.page.pageSize = res.data.data.size
-                this.page.totalPage = res.data.data.pages
-                this.page.totalSize = res.data.data.total
-                this.infos = res.data.data.list
-                console.log(res.data.data.list)
-            })
-        }
+      getinfolist () {
+        axios.get('/sub/subject/findAllSubject?page=1&pageSize=10').then((res) => {
+            this.infos = res.data.data.list
+            console.log('info',res.data.data.list)
+        })
+      }
     }
 }
 </script>

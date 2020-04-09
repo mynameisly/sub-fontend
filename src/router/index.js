@@ -5,11 +5,10 @@ import pub from './pub.js'
 Vue.use(Router)
 
 var router = new Router({
-  // 配置路由对象
   routes: [
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/home'
     },
     {
       path: '/login',
