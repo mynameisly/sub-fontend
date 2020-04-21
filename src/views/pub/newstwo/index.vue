@@ -3,7 +3,7 @@
         <div class="newstwo_container">
             <el-tabs :tab-position="tabPosition">
                 <el-tab-pane label="竞赛新闻">
-                  <ul>
+                  <ul style="min-height:511px">
                     <li v-for="(item, idx) in newstwos" :key="idx" style="padding: 15px 0 15px 0;">
                       <a href="#">
                         <span class="content">{{ item.newstwo_content }}</span>
@@ -14,7 +14,7 @@
                   <page-component :total="page1.totalSize" :page="page1" @pageChange="(item)=>handlePageChange1(item)" />
                 </el-tab-pane>
                 <el-tab-pane label="通知公告">
-                  <ul>
+                  <ul style="min-height:511px">
                     <li v-for="(item, idx) in notices" :key="idx" style="padding: 15px 0 15px 0;">
                       <a href="#">
                         <span class="content">{{ item.notice_content }}</span>
@@ -143,7 +143,7 @@ export default {
     },
     methods: {
       handlePageChange1(item) {
-        axios.get('sub/newTwo/findAllNewsTwo?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+        axios.get('/sub/newTwo/findAllNewsTwo?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
           this.page1.currentPage = res.data.data.currentPage
           this.page1.pageSize = res.data.data.size//条数
           this.page1.totalPage = res.data.data.pages//总页数
@@ -155,16 +155,17 @@ export default {
         })
       },
       getNewsTwoList() {
-        axios.get('sub/newTwo/findAllNewsTwo?page=1&pageSize=10').then((res) => {
+        axios.get('/sub/newTwo/findAllNewsTwo?page=1&pageSize=10').then((res) => {
           this.page1.currentPage = res.data.data.currentPage
           this.page1.pageSize = res.data.data.size
           this.page1.totalPage = res.data.data.pages
           this.page1.totalSize = res.data.data.total
           this.newstwos = res.data.data.list
+          console.log('this.newstwos',res.data.data.list)
         })
       },
       handlePageChange2(item) {
-        axios.get('sub/notice/findAllNotice?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+        axios.get('/sub/notice/findAllNotice?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
           this.page2.currentPage = res.data.data.currentPage
           this.page2.pageSize = res.data.data.size
           this.page2.totalPage = res.data.data.pages
@@ -173,7 +174,7 @@ export default {
         })
       },
       getNoticeList() {
-        axios.get('sub/notice/findAllNotice?page=1&pageSize=10').then((res) => {
+        axios.get('/sub/notice/findAllNotice?page=1&pageSize=10').then((res) => {
           this.page2.currentPage = res.data.data.currentPage
           this.page2.pageSize = res.data.data.size
           this.page2.totalPage = res.data.data.pages

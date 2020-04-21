@@ -65,7 +65,7 @@ export default {
     },
     methods: {
       handlePageChange(item) {
-        axios.get('sub/train/findAllSucTwo?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+        axios.get('/sub/train/findAllSucTwo?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
           this.page.currentPage = res.data.data.currentPage
           this.page.pageSize = res.data.data.size
           this.page.totalPage = res.data.data.pages
@@ -80,7 +80,7 @@ export default {
           this.page.totalPage = res.data.data.pages
           this.page.totalSize = res.data.data.total
           this.suctwos = res.data.data.list
-          console.log(res.data.data.list)
+        //   console.log(res.data.data.list)
         })
       }
     }

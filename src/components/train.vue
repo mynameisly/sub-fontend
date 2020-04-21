@@ -85,12 +85,13 @@ export default {
     box-shadow: 0px 1px 2px #000;
     width: 1000px;
     margin: 0 auto 30px;
+    min-height: 285px;
     display: flex;
     justify-content: space-between;
 }
 .train_container_lf {
     padding: 20px 0 0 20px;
-    width: 88%;
+    width: 80%;
     li {
         padding-bottom: 10px;
         a {

@@ -2,7 +2,7 @@
     <div id="suc">
         <div class="suc">
             <div class="title">
-                <a href="/pub/suctwo">学科竞赛信息</a>
+                <a href="/pub/suctwo">竞赛成果</a>
                 <a href="/pub/suctwo" class="more">更多>></a>
             </div>
             <div class="sucBox">
@@ -10,7 +10,7 @@
                   <el-carousel-item v-for="(item, idx) in sucs" :key="idx">
                       <!-- <h3 class="medium">{{ item }}</h3> -->
                       <video :src="item.suc_video" width="675" height="310" controls="controls"></video>
-                      <p>{{ item.suc_title }}</p>
+                      <p style="padding-top: 30px;text-align: center;">{{ item.suc_title }}</p>
                   </el-carousel-item>
                 </el-carousel>
             </div>
@@ -57,7 +57,7 @@ export default {
     },
     methods: {
       getSucList () {
-        axios.get('sub/suc/findAllSuc?page=1&pageSize=5').then((res) => {
+        axios.get('/sub/suc/findAllSuc').then((res) => {
           this.sucs = res.data.data.list
         console.log('suc',res.data.data.list)
       })
