@@ -143,12 +143,15 @@ export default {
     },
     methods: {
       handlePageChange1(item) {
-        axios.get('sub/newTwo/findAllNewsTwo' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+        axios.get('sub/newTwo/findAllNewsTwo?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
           this.page1.currentPage = res.data.data.currentPage
-          this.page1.pageSize = res.data.data.size
-          this.page1.totalPage = res.data.data.pages
-          this.page1.totalSize = res.data.data.total
+          this.page1.pageSize = res.data.data.size//条数
+          this.page1.totalPage = res.data.data.pages//总页数
+          this.page1.totalSize = res.data.data.total//总共条数
           this.newstwos = res.data.data.list
+          // console.log('分页数据',res.data.data.list)
+          // console.log('res',res)
+          // console.log('item',item)
         })
       },
       getNewsTwoList() {
@@ -161,7 +164,7 @@ export default {
         })
       },
       handlePageChange2(item) {
-        axios.get('sub/notice/findAllNotice' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+        axios.get('sub/notice/findAllNotice?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
           this.page2.currentPage = res.data.data.currentPage
           this.page2.pageSize = res.data.data.size
           this.page2.totalPage = res.data.data.pages

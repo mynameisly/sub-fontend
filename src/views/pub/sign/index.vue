@@ -2,7 +2,7 @@
     <div id="sign">
         <div class="sign_container">
             <div class="wrap" v-for="(item, idx) in signs" :key="idx">
-                <img :src="item.sign_img" :alt="item.sign_title">
+                <img :src="require('E://fileDown//'+item.sign_img)" :alt="item.sign_title">
                 <div class="signform">
                     <div class="sign_title">
                         <a href="program.html">{{ item.sign_title }}</a>
@@ -11,20 +11,18 @@
                     <div class="sign_body">
                         <ul>
                             <li class="sign_time">报名时间: {{ item.sign_stime }} 至 {{ item.sign_etime }}</li>
-                            <li class="match_time">比赛时间: {{ item.sign_sm_time }}至 {{ item.sign_em_time }}(总时长: {{ item.total_time }})</li>
+                            <li class="match_time">比赛时间: {{ item.sign_sm_time }}至 {{ item.sign_em_time }}</li>
                             <li class="users">主办方: {{ item.sign_sponsor }}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="sign">
-                    <a href="program.html" class="sign_btn">报名</a>
+                    <a href="program.html" class="sign_btn">点击报名</a>
                     <div class="sign_time">总时长: {{ item.total_time }}小时</div>
                 </div>
             </div>
-            
-            <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
-
         </div>
+        <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
     </div>
 </template>
 
@@ -128,7 +126,7 @@ export default {
           this.page.totalPage = res.data.data.pages
           this.page.totalSize = res.data.data.total
           this.signs = res.data.data.list
-          console.log('sign',res.data.data.list)
+        //   console.log('sign',res.data.data.list)
         })
       },
     },
@@ -145,52 +143,47 @@ export default {
 </script>
 
 <style lang="scss">
-.sign_container .wrap{
-    width: 1000px;
-    margin: 10px auto;
-    height: 200px;
-    display: flex;
-    box-shadow: 0 0 8px #ccc;
-    /*border: 1px dotted red;*/
+.sign_container{
+    min-height: 1040px;
+    .wrap{
+        width: 1000px;
+        margin: 10px auto;
+        height: 200px;
+        display: flex;
+        box-shadow: 0 0 8px #ccc;
+        img{
+            width: 25%;
+        }
+        .signform{
+            width: 60%;
+            height: 200px;
+            padding-left: 20px;
+            .sign_title{
+                display: flex;
+                margin: 20px 0 10px 0;
+                a{
+                    font-size: 14px;
+                    font-weight: bold;
+                    display: block;
+                    color: #3D3D3D;
+                }
+                span{
+                    display: block;
+                    width: 90px;
+                    height: 20px;
+                    line-height: 20px;
+                    margin-left: 10px;
+                    text-align: center;
+                    border-radius: 3px;
+                    background-color: orange;
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
-
-.sign_container .wrap img{
-    width: 25%;
-}
-
-.sign_container .wrap .signform{
-    width: 60%;
-    height: 200px;
-    padding-left: 20px;
-    /*border: 1px solid green;*/
-}
-
-.sign_container .wrap .signform .sign_title{
-    display: flex;
-    margin: 20px 0 10px 0;
-}
-
-.sign_container .wrap .signform .sign_title a{
-    font-size: 14px;
-    font-weight: bold;
-    /*margin: 20px 0 10px 0;*/
-    display: block;
-    color: #3D3D3D;
-}
-
 .sign_container .wrap .signform .sign_title a:hover{
     color: #BE392A;
-}
-
-.sign_container .wrap .signform .sign_title span{
-    display: block;
-    width: 70px;
-    height: 20px;
-    margin-left: 10px;
-    text-align: center;
-    border-radius: 3px;
-    background-color: orange;
-    color: #fff;
 }
 
 .sign_container .wrap .signform .sign_body{

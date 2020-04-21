@@ -2,7 +2,7 @@
     <div id="suctwo">
         <div class="suc_container">
             <div class="wrap" v-for="(item, idx) in suctwos" :key="idx">
-                <img :src="item.suctwo_img" :alt="item.suctwo_title">
+                <img :src="require('E://FileDown//' + item.suctwo_img)" :alt="item.suctwo_title">
                 <div class="signform">
                     <div class="sign_title">
                         <a href="program.html">{{ item.suctwo_title }}</a>
@@ -18,9 +18,8 @@
                     <a href="" class="sign_btn">详情</a>
                 </div>
             </div>
-          
-          <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
         </div>
+        <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
     </div>
 </template>
 
@@ -89,55 +88,50 @@ export default {
 </script>
 
 <style lang="scss">
-.suc_container .wrap{
-    width: 1000px;
-    margin: 10px auto;
-    height: 200px;
-    display: flex;
-    box-shadow: 0 0 8px #ccc;
+.suc_container{
+    min-height: 1040px;
+    .wrap{
+        width: 1000px;
+        margin: 10px auto;
+        height: 200px;
+        display: flex;
+        box-shadow: 0 0 8px #ccc;
+        img{
+            width: 25%;
+        }
+        .signform{
+            width: 60%;
+            height: 200px;
+            padding-left: 20px;
+            .sign_title{
+                display: flex;
+                margin: 20px 0 10px 0;
+                a{
+                    font-size: 14px;
+                    font-weight: bold;
+                    display: block;
+                    color: #3D3D3D;
+                }
+                span{
+                    display: block;
+                    width: 70px;
+                    height: 20px;
+                    margin-left: 10px;
+                    text-align: center;
+                    border-radius: 3px;
+                    background-color: orange;
+                    color: #fff;
+                }
+            }
+            .sign_body{
+                margin: 20px auto;
+            }
+        }
+    }
 }
-
-.suc_container .wrap img{
-    width: 25%;
-}
-
-.suc_container .wrap .signform{
-    width: 60%;
-    height: 200px;
-    padding-left: 20px;
-}
-
-.suc_container .wrap .signform .sign_title{
-    display: flex;
-    margin: 20px 0 10px 0;
-}
-
-.suc_container .wrap .signform .sign_title a{
-    font-size: 14px;
-    font-weight: bold;
-    display: block;
-    color: #3D3D3D;
-}
-
 .suc_container .wrap .signform .sign_title a:hover{
     color: #BE392A;
 }
-
-.suc_container .wrap .signform .sign_title span{
-    display: block;
-    width: 70px;
-    height: 20px;
-    margin-left: 10px;
-    text-align: center;
-    border-radius: 3px;
-    background-color: orange;
-    color: #fff;
-}
-
-.suc_container .wrap .signform .sign_body{
-    margin: 20px auto;
-}
-
 .suc_container .wrap .signform .sign_body ul li{
     min-width: 100px;
     margin: 0 20px 30px 0;

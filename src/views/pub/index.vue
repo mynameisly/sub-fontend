@@ -15,6 +15,7 @@ import IdxNews from '@/components/news'
 import IdxSuc from '@/components/suc'
 import IdxTrain from '@/components/train'
 export default {
+    name: 'Home',
     components: {
         IdxLunbo,
         IdxInfo,
@@ -22,7 +23,6 @@ export default {
         IdxSuc,
         IdxTrain
     },
-    name: 'Home',
     data() {
         return {
             

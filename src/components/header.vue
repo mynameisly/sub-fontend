@@ -4,8 +4,8 @@
         <div id="logo"></div>
         <div class="header_right">
           <a href="">管理员登录</a>
-          <a :href="this.$router.push({path: '/login'})">用户登录</a>
-          <a :href="this.$router.push({path: '/register'})">用户注册</a>
+          <a @click="goLogin">用户登录</a>
+          <a @click="goGegister">用户注册</a>
           <!-- <div class="search_sou">
             <input type="image" name="Submit" src="../../assets/images/index/ss.jpg" value="提交" onclick="chksearch()">
           </div>
@@ -24,6 +24,14 @@ export default {
         return {
 
         }
+    },
+    methods: {
+      goLogin() {
+        this.$router.push({path: '/login'})
+      },
+      goGegister() {
+        this.$router.push({path: '/register'})
+      }
     }
 }
 </script>

@@ -2,7 +2,7 @@
   <el-pagination
     align="center"
     background
-    layout="sizes,prev, pager, next,jumper"
+    layout="total,sizes,prev,pager,next,jumper"
     :total="total"
     :current-page.sync="page.currentPage"
     :page-size.sync="page.pageSize"

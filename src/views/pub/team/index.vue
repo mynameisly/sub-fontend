@@ -1,29 +1,31 @@
 <template>
-    <div id="team">
-        <div class="team_container" v-for='(item, idx) in teams' :key="idx">
-            <div class="matchLf">
-                <img :src="item.team_img" alt="图片">
-            </div>
-            <div class="matchIntor">
-                <div class="teacher">
-                    <span>指导老师:</span>
-                    <p>{{ item.team_teacher }}</p>
-                </div>
-                <div class="student">
-                    <!-- 团队成员最多显示一行，超过以省略号显示 -->
-                    <span>团队成员:</span>
-                    <p>{{ item.team_person }}</p>
-                </div>
-                <div class="comment">
-                    <!-- 项目评价最多显示一行，超过以省略号显示 -->
-                    <span>项目评价:</span>
-                    <p>{{ item.team_comment }}</p>
-                </div>
-            </div>
+  <div id="team">
+    <div class="warp" style="min-height:1397px">
+      <div class="team_container" v-for='(item, idx) in teams' :key="idx">
+        <div class="matchLf">
+          <img :src="require('E://fileDown//'+item.team_img)" alt="图片">
         </div>
-
-        <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
+        <div class="matchIntor">
+          <div class="teacher">
+              <span>指导老师:</span>
+              <p>{{ item.team_teacher }}</p>
+          </div>
+          <div class="student">
+              <!-- 团队成员最多显示一行，超过以省略号显示 -->
+              <span>团队成员:</span>
+              <p>{{ item.team_person }}</p>
+          </div>
+          <div class="comment">
+              <!-- 项目评价最多显示一行，超过以省略号显示 -->
+              <span>项目评价:</span>
+              <p>{{ item.team_comment }}</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
+  </div>
 </template>
 
 <script>
@@ -95,7 +97,7 @@ export default {
           this.page.totalPage = res.data.data.pages
           this.page.totalSize = res.data.data.total
           this.teams = res.data.data.list
-          console.log(res.data.data.list)
+          // console.log(res.data.data.list)
         })
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div id="register">
+  <div id="login">
     <div class="reg_container">
       <el-form ref="form" :model="form" :rules="rules" label-width="60px">
         <h1>用户登录</h1>
@@ -67,7 +67,7 @@ export default {
   methods: {
     onSubmit() {
       axios.get('sub/userInfo/login?username=' + this.form.username + '&password=' + this.form.password).then((res) => {
-        // console.log('login',res)
+        console.log('login',res)
         if (res.data.code === 200) {
           this.$message({
             type: 'success',
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#register {
+#login {
     width: 100%;
     height: 100vh;
     background: url('../../assets/images/login/login.jpg') no-repeat;
