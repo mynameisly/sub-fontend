@@ -18,7 +18,7 @@
                 </div>
                 <div class="sign">
                     <a href="program.html" class="sign_btn">点击报名</a>
-                    <div class="sign_time">总时长: {{ item.total_time }}小时</div>
+                    <div class="sign_time">总时长: {{ item.totaltime }}</div>
                 </div>
             </div>
         </div>
@@ -125,18 +125,42 @@ export default {
           this.page.pageSize = res.data.data.size
           this.page.totalPage = res.data.data.pages
           this.page.totalSize = res.data.data.total
-          this.signs = res.data.data.list
-        //   console.log('sign',res.data.data.list)
+          this.signs = this.handleSignData(res.data.data.list)
+        //   console.log('this.sign',res.data.data.list)
         })
       },
-    },
-    computed: {
-      cal_remain_time() {
-        console.log(1111111);
-        const now_time = new Date();
-        console.log(now_time);
-        return this.remain_time = 1111;
-        // this.remain_time = this.signs.item.sign_sm_time - now_time;
+      handleSignData(data) {
+        const temp = data
+        temp.forEach(ele => {
+            ele.totaltime = this.formatSeconds((new Date(ele.sign_em_time) - new Date(ele.sign_sm_time))/1000) // 秒
+        });
+        return temp
+      },
+      formatSeconds(value) {
+        var secondTime = parseInt(value);// 秒
+        var minuteTime = 0;// 分
+        var hourTime = 0;// 小时
+        if(secondTime > 60) {//如果秒数大于60，将秒数转换成整数
+            //获取分钟，除以60取整数，得到整数分钟
+            minuteTime = parseInt(secondTime / 60);
+            //获取秒数，秒数取佘，得到整数秒数
+            secondTime = parseInt(secondTime % 60);
+            //如果分钟大于60，将分钟转换成小时
+            if(minuteTime > 60) {
+                //获取小时，获取分钟除以60，得到整数小时
+                hourTime = parseInt(minuteTime / 60);
+                //获取小时后取佘的分，获取分钟除以60取佘的分
+                minuteTime = parseInt(minuteTime % 60);
+            }
+        }
+        var result = "" + parseInt(secondTime) + "秒";
+        if(minuteTime > 0) {
+            result = "" + parseInt(minuteTime) + "分" + result;
+        }
+        if(hourTime > 0) {
+            result = "" + parseInt(hourTime) + "小时" + result;
+        }
+        return result;
       }
     }
 }
